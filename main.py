@@ -24,7 +24,7 @@ Window.size = (300, 600)
 
 class WindowManager(ScreenManager):
     pass
-    
+
 
 class ScreanSelected(Screen):
     pass
@@ -95,7 +95,7 @@ class AddNewCourse(Screen):
                 file_json = JsonStore('file.json')
                 file_json.put(addnew_file, day=DAY, mode=MODE, all='yes')
                 MESSAGE = ADDTEXT.replace('\n\nIs everything corect?', '')
-                MESSAGE = MESSAGE.replace("'","")
+                MESSAGE = MESSAGE.replace("'", "")
 
 # dodaj jeszcze plik z plikami, żebyś mógł otworzyć listę otwieraną z plikami i day='monday'
 # przy dodaniu kursu dodasz plik do pliku z kursami put(file, day='monday')
@@ -103,6 +103,7 @@ class AddNewCourse(Screen):
         else:
             self.label_wid.text = 'Add a plan to continue,\n\nwithout plan you cant add courses!!'
             MESSAGE = self.label_wid.text
+
 
 class UpdateTheData(Screen):
 
@@ -177,7 +178,7 @@ class UpdateTheData(Screen):
             idd_new = []
             for i in idd:
                 i = [i, plan_file_json.get(i)['level'],
-                    plan_file_json.get(i)['figures']]
+                     plan_file_json.get(i)['figures']]
                 idd_new.append(i)
 
             figure = []
@@ -195,14 +196,16 @@ class UpdateTheData(Screen):
         self.done_figures = text
 
     def done(self):
-        
+
         try:
             done_to_check = list(self.done_figures.split(", "))
             plan_file_json = JsonStore(self.file_chosse)
-            plan_file_json.put(done_to_check[0], level=done_to_check[1], figures=done_to_check[2], done='yes')
+            plan_file_json.put(
+                done_to_check[0], level=done_to_check[1], figures=done_to_check[2], done='yes')
             self.spiner_figure.text = 'Whose next?'
         except:
             pass
+
 
 class ShowMyCourses(Screen):
 
@@ -522,11 +525,12 @@ class ShowPlan(Screen):
 
 
 class Messege(Screen):
-    
+
     mmmesage = ObjectProperty()
 
     def message_run(self):
         self.mmmesage.text = MESSAGE
+
 
 sm = ScreenManager()
 sm.add_widget(ScreanSelected(name='main'))
