@@ -12,7 +12,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.factory import Factory
 from kivy.storage.jsonstore import JsonStore
 from kivy.uix.scrollview import ScrollView
-
+# komentarz
 import os
 
 
