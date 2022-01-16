@@ -1,0 +1,468 @@
+<ScreanSelected, Courses, Plan, Messege>:
+   
+    orientation: 'vertical'
+    padding: 5
+    spacing: 2
+
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'nllogolgg6.png'
+
+    ActionBar:
+        pos_hint:{'top' : 1}
+        size_hint_y:.06
+        ActionView:
+            ActionPrevious:
+                title: 'No Limits'
+                with_previous: False
+                
+            ActionGroup:
+                text: 'Menu'
+                color: 1,0,0,1
+                ActionButton:
+                    text: 'Menu'
+                    blod: True
+                    on_press: root.manager.current = 'main'
+                ActionButton:
+                    text: 'Courses'
+                    blod: True
+                    on_press: root.manager.current = 'courses'
+                ActionButton:
+                    text: 'Plan'
+                    blod: True
+                    on_press: root.manager.current = 'plan'
+
+<AddACourse, UpdateTheData, ShowMyCourses, CloseTheCourse>:
+    
+    orientation: 'vertical'
+    padding: 5
+    spacing: 2
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'nllogolgg6.png'
+
+    ActionBar:
+        pos_hint:{'top' : 1}
+        size_hint_y:.06
+        ActionView:
+            ActionPrevious:
+                title: 'No Limits'
+                with_previous: False
+                
+            ActionGroup:
+                text: 'Menu'
+                color: 1,0,0,1
+                ActionButton:
+                    text: 'Menu'
+                    blod: True
+                    on_press: root.manager.current = 'main'
+                ActionButton:
+                    text: 'Courses'
+                    blod: True
+                    on_press: root.manager.current = 'courses'
+                ActionButton:
+                    text: 'Plan'
+                    blod: True
+                    on_press: root.manager.current = 'plan'
+
+<AddAPlan, EditPlan, ShowPlan, AddNewCourse, AddAPlan>:
+    
+    orientation: 'vertical'
+    padding: 5
+    spacing: 2
+
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'nllogolgg6.png'
+
+    ActionBar:
+        pos_hint:{'top' : 1}
+        size_hint_y:.06
+        ActionView:
+            ActionPrevious:
+                title: 'No Limits'
+                with_previous: False
+                
+            ActionGroup:
+                text: 'Menu'
+                color: 1,0,0,1
+                ActionButton:
+                    text: 'Menu'
+                    blod: True
+                    on_press: root.manager.current = 'main'
+                ActionButton:
+                    text: 'Courses'
+                    blod: True
+                    on_press: root.manager.current = 'courses'
+                ActionButton:
+                    text: 'Plan'
+                    blod: True
+                    on_press: root.manager.current = 'plan'
+
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+<MainButton@Button>:
+    color: 1,1,1,1
+    blod: True
+    background_color: 0,0,0,0.5
+    font_size: 32
+    text_size: self.size
+    valign: 'middle'
+    halign: 'center'
+
+<MainSpinner@Spinner>:   
+    color: 1,1,1,1
+    blod: True
+    background_color: 0,0,0,0.5
+    option_cls_background_color: 0,0,0,0.5
+    font_size: 32
+
+<MainLabel@Label>:
+    color: 1,1,1,1
+    blod: True
+    background_color: 0,0,0,0.5
+    font_size: 20
+    text_size: self.size
+    valign: 'middle'
+    halign: 'center'
+
+
+###############################################
+<ScreanSelected>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        MainButton:
+            text: 'Courses'
+            on_press: root.manager.current = 'courses'
+        MainButton:
+            text: 'Plan'
+            on_press: root.manager.current = 'plan'
+
+
+
+#############################################
+
+<Courses>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+
+        MainButton:
+            text: 'Add a course'
+            on_press: root.manager.current = 'addacourse'
+        MainButton:
+            text: 'Update the date'
+            on_press: root.manager.current = 'updatethedate'
+        MainButton:
+            text: 'Show my courses'
+            on_press: root.manager.current = 'showmycourses'
+        MainButton:
+            text: 'Close the course'
+            on_press: root.manager.current = 'closethecourse'
+
+#####################################
+
+<Plan>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+
+        MainButton:
+            text: 'Add a plan'
+            on_press: root.manager.current = 'addaplan'
+        MainButton:
+            text: 'Edit plan'
+            on_press: root.manager.current = 'editplan'
+        MainButton:
+            text: 'Show plan'
+            on_press: root.manager.current = 'showplan'
+        
+###########################################
+
+<AddACourse>:
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 0.4
+
+        MainSpinner:
+            text: 'Day'
+            id: 'day'
+            values: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+            #change background color value pokombinuj z ID
+            on_text: root.day(self.text)
+
+        MainSpinner:
+            text: 'Time'
+            values: '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00'
+            on_text: root.time(self.text)
+            
+        MainSpinner:
+            text: 'mode'
+            values: 'Open', 'Basic', 'Faster'
+            on_text: root.mode(self.text)
+
+        MainButton:
+            text: 'Add new course'
+            on_press: root.addition_coures()
+            on_press: root.manager.current = 'addnewcourse'
+            #on_press: root.AddACourse.state()
+
+<AddNewCourse>:
+    
+    label_wid: addnewcourse_change
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        id: addnewcourse_change
+        MainButton:
+            id: addnewcourse_change
+            text: 'Show me, what i lead'
+            size_hint_y:.80
+            text_size: self.size
+            valign: 'middle'
+            on_press: root.state()
+#finalnie zrób z tego label i dodaj on_pres do AddCourse i dodaj atrybut AddNewCourse do AddCourse
+        Button:
+            text: 'Yes, the data is corect!'
+            color: 1,1,1,1
+            blod: True
+            size_hint_y:.10
+            background_color: 0,1,0,0.5
+            on_press: root.addnewcourse_yes()
+            on_press: root.manager.current = 'messege'
+#uruchom automatycznie gdy tylko włączysz ekran z widgetem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Button:
+            text: 'No, lett me change somthing!'
+            color: 1,1,1,1
+            blod: True
+            background_color: 1,0,0,1
+            size_hint_y:.10
+            on_press: root.manager.current = 'addacourse'
+
+<UpdateTheData>:
+    
+    spiner_day: spiner_day
+    spiner_cours: spiner_cours
+    spiner_figure: spiner_figure
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        MainSpinner:
+            id: spiner_day
+            text: 'Day'
+            values: ''
+            on_press: root.set_day()
+            on_text: root.show_day(self.text)            
+        MainSpinner:
+            id: spiner_cours
+            text: 'Cours'
+            values: ''
+            on_press: root.set_cours()
+            on_text: root.show_cours(self.text)
+        MainSpinner:
+            id: spiner_figure
+            text: 'Figure'
+            values: ''
+            on_press: root.set_figure()
+            on_text: root.show_figures(self.text)
+        MainButton:
+            text: 'Set as done'
+            on_release: root.done()
+        MainButton:
+            text: 'Back to Menu'
+            on_release: root.manager.current = 'main'
+
+<ShowMyCourses>:
+
+    show_courses_text: show_courses_text
+    spiner: spiner
+    spiner_course: spiner_course
+    spiner_done: spiner_done
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        BoxLayout:     
+            size_hint_y: .1
+            MainButton:
+                text: 'All'
+                on_release: root.show_all()
+            MainSpinner:
+                id: spiner
+                text: 'By Day'
+                values: 'Monday', 'Tuesday'
+                on_press: root.set_day()
+                on_text: root.show_by_day(self.text)
+        BoxLayout:     
+            size_hint_y: .1
+            MainSpinner:
+                id: spiner_course
+                size_hint_x: .7
+                text: 'Course'
+                values: ''
+                on_press: root.set_file()
+                on_text: root.show_detals(self.text)
+            MainSpinner:
+                id: spiner_done
+                size_hint_x: .3
+                text: 'Done'
+                values: 'yes', 'no'
+                on_text: root.show_change_detals(self.text)
+
+        BoxLayout:
+            size_hint_y: .66
+            MainLabel:
+                id: show_courses_text
+                text: '*All - show onli list courses'
+
+<CloseTheCourse>:
+
+    label_input: label_input
+    spiner: spiner
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        MainSpinner:
+            id: spiner
+            text: 'Choose cours to Close'
+            values: ''
+            on_press: root.set_file()
+            on_text: root.show_file(self.text)
+        MainButton:
+            text: 'Close The Cours!!!'
+            on_release: root.delete_cours()
+        Label:
+            text: ''
+            id: label_input
+
+<AddAPlan>:
+# w finalnej wersji zamień na label
+    text_input: text_input
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        BoxLayout:     
+            size_hint_y: .1
+            MainButton:
+                text: 'Load'
+                on_release: root.show_load()
+            MainButton:
+                text: 'Save'
+                on_press: root.save()
+                #on_release: root.manager.current = 'messege'
+
+        BoxLayout:
+            size_hint_y: .86
+            MainLabel:
+                id: text_input
+                text: '1, P0, basic, no,'
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
+
+<EditPlan>:
+
+    text_input: text_input
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        BoxLayout:     
+            size_hint_y: .1
+            MainButton:
+                text: 'Load'
+                on_release: root.show_load()
+            MainButton:
+                text: 'Edit'
+                on_press: root.save()
+                #on_release: root.manager.current = 'messege'
+
+        BoxLayout:
+            size_hint_y: .86
+            MainLabel:
+                id: text_input
+                text: 'make sure that the plan you wrote has the appropriate structure as below: id number, level, item, executed(yes or no),'
+
+<ShowPlan>:
+
+    text_input_show: text_input_show
+    spiner: spiner
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        BoxLayout:     
+            size_hint_y: .1
+            MainButton:
+                text: 'All'
+                on_release: root.show_all()
+            MainSpinner:
+                id: spiner
+                text: 'By Level'
+                values: 'P0','P1'
+                on_press: root.set_level()
+                on_text: root.show_by_level(self.text)
+
+        BoxLayout:
+            size_hint_y: .86
+            MainLabel:
+                id: text_input_show
+                text: 'make sure that the plan you wrote has the appropriate structure as below: id number, level, item, executed,'
+
+<Messege>:
+
+    mmmesage: mmmesage
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y:.94
+        padding: 15
+        BoxLayout:
+            size_hint_y: .86
+            MainButton:
+                id: mmmesage
+                text: 'click here'
+                on_press: root.message_run()
+                
+        BoxLayout:     
+            size_hint_y: .1
+            MainButton:
+                text: 'Back to Menu'
+                on_release: root.manager.current = 'main'
+
